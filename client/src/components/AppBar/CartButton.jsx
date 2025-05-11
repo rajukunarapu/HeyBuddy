@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Stack, Typography } from "@mui/material";
-import cartLogo from "../assets/Cart.svg";
+import cartLogo from "../../assets/Cart.svg";
 
 const CartButton = () => {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 import logo from "../assets/flipkart-logo.svg";
-import SearchBar from "../components/SearchBar";
-import LoginButton from "../components/LoginButton";
-import CartButton from "../components/CartButton";
-import SellerButton from "../components/SellerButton";
+import SearchBar from '../components/AppBar/SearchBar'
+import LoginButton from "../components/AppBar/LoginButton";
+import CartButton from "../components/AppBar/CartButton";
+import SellerButton from "../components/AppBar/SellerButton";
 
 const Header = () => {
   return (

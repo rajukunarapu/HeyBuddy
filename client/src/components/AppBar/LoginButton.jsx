@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, Stack, Typography } from "@mui/material";
 import { ExpandMore, ExpandLess, AccountCircle } from "@mui/icons-material";
-import MenuForLogin from "./MenuForLogin";
+import MenuForLogin from "../Common/MenuForLogin";
 
 const LoginButton = () => {
   

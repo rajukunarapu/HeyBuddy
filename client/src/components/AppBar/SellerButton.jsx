@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Stack, Typography } from '@mui/material'
-import SellerBox from '../assets/SellerBox.svg'
+import SellerBox from '../../assets/SellerBox.svg'
 
 const SellerButton = () => {
   return (
