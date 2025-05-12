@@ -48,6 +48,6 @@ export const OfficeRegistrationDetails = [
   { id: 5, name:"Benguluru 560103," },
   { id: 6, name:"Karnataka, India" },
   { id: 7, name: "CIN : U51109KA2012PTC06617" },
-  { id: 8, name: "Telephone : 044-45614700/044-67415800" }
+  { id: 8, name: "Telephone : 044-45614700 / 044-67415800" }
 ]
 
