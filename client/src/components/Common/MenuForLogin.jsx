@@ -42,6 +42,7 @@ const MenuForLogin = ({ open, anchorEl, handleMenuClose }) => {
         >
           <Typography variant="body1">New Customer?</Typography>
           <Link
+            href = "/signup"
             underline="none"
             fontWeight={"bolder"}
             sx={{ cursor: "pointer" }}
