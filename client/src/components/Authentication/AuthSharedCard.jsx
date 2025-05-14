@@ -1,10 +1,10 @@
 import React from "react";
 import { Stack, Typography, Link } from "@mui/material";
 import FlipkartAuthBoxLogo from "../../assets/images/Flipkart-authBox-logo3.png";
-import AuthTextFields from "./AuthTextFields";
+import AuthSharedTextFields from "./AuthSharedTextFields";
 
 
-const AuthCard = ({ header1, header2, linkText }) => {
+const AuthSharedCard = ({ title1, title2, linkName, mode, href }) => {
 
   return (
     <>
@@ -25,12 +25,10 @@ const AuthCard = ({ header1, header2, linkText }) => {
           sx={{ backgroundColor: "rgb(40, 116, 240)" }}
         >
           <Typography variant="h5" color="white" fontWeight={"bold"}>
-            {header1 ? header1 : "Looks like you're new here!"}
+            {title1}
           </Typography>
           <Typography variant="h6" mt={2} sx={{ color: "#dbdbdb" }}>
-            {header2
-              ? header2
-              : "Sign up with your email address to get started"}
+            {title2}
           </Typography>
           <img
             src={FlipkartAuthBoxLogo}
@@ -49,7 +47,7 @@ const AuthCard = ({ header1, header2, linkText }) => {
           height={"100%"}
           sx={{ backgroundColor: "white" }}
         >
-          <AuthTextFields/>
+          <AuthSharedTextFields mode={mode} />
 
           <Typography variant="subtitle2" mt={2} sx={{ color: "#878787" }}>
             By continuing, you agree to Flipkart's Terms of Use and Privacy
@@ -58,12 +56,12 @@ const AuthCard = ({ header1, header2, linkText }) => {
 
           <Link
             underline="hover"
-            href={linkText ? "/signup" : "/login"}
+            href={href}
             mt={3}
             fontWeight={"bold"}
             sx={{ cursor: "pointer", "&:hover": { color: "red" } }}
           >
-            {linkText ? linkText : "Existin User? Log in"}
+            {linkName}
           </Link>
         </Stack>
       </Stack>
@@ -71,4 +69,4 @@ const AuthCard = ({ header1, header2, linkText }) => {
   );
 };
 
-export default AuthCard;
+export default AuthSharedCard;

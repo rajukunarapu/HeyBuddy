@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { Button, TextField, InputAdornment, IconButton } from "@mui/material";
+import { Button, TextField, InputAdornment, IconButton, Alert } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import useAuthForm from "../../hooks/authUse";
+import useAuthForm from '../../hooks/useAuthForm';
 
 
-const AuthTextFields = () => {
+const AuthSharedTextFields = ({mode}) => {
 
     // visibilty toogle for icon
     const [visibilityToggle, setVisibilityToggle] = useState(false);
     // useAuthForm custom hook for handling form data
-    const { formData, handleOnChange, handleOnClick } = useAuthForm();
+    const { formData, handleOnChange, handleOnClick, alertMessage, isAlertShow} = useAuthForm(mode);
 
   return (
     <>
         <TextField
+        autoFocus
         name={"email"}
         value={formData.email}
         onChange={handleOnChange}
@@ -35,6 +36,10 @@ const AuthTextFields = () => {
           },
         }}
       />
+
+      {
+        isAlertShow && !(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) && <Alert severity={alertMessage? "success": "error"} sx={{ width:'100%', borderRadius:10 }} >{alertMessage? alertMessage : "Eroor ocuured"}</Alert>
+      }
 
       <TextField
         name={"password"}
@@ -68,6 +73,11 @@ const AuthTextFields = () => {
         }}
       />
 
+      {
+      
+        isAlertShow && !(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/.test(formData.password)) && <Alert severity={alertMessage? "success": "error"} sx={{ width:'100%', borderRadius:10 }} >{alertMessage? alertMessage : "Eroor ocuured"}</Alert>
+      }
+
         <Button
             onClick={handleOnClick}
             variant="contained"
@@ -87,4 +97,4 @@ const AuthTextFields = () => {
   )
 }
 
-export default AuthTextFields
+export default AuthSharedTextFields;

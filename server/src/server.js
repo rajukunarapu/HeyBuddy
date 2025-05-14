@@ -1,6 +1,6 @@
 require('dotenv').config();
 const app = require("./app");
-const connectDB = require("./config/config");
+const connectDB = require("./config/db")
 
 connectDB().then(() => {
   console.log("DB connected successfully");

@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const authRoutes = require('./routes/authRoutes')
 
 // express instance 
 const app = express();
@@ -23,6 +24,7 @@ app.use(cors({
 }))
 
 // for routes
+app.use('/auth', authRoutes)
 
 
 module.exports = app;
