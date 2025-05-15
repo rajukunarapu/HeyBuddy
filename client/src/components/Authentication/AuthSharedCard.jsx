@@ -11,14 +11,14 @@ const AuthSharedCard = ({ title1, title2, linkName, mode, href }) => {
       <Stack
         direction={"row"}
         m={"40px 0px"}
-        height={"400px"}
+        height={"450px"}
         alignItems={"center"}
         justifyContent={"center"}
       >
         <Stack
           direction={"column"}
           position={"relative"}
-          maxHeight={"400px"}
+          maxHeight={"450px"}
           width={"25%"}
           p={"30px"}
           height={"100%"}
@@ -40,7 +40,7 @@ const AuthSharedCard = ({ title1, title2, linkName, mode, href }) => {
 
         <Stack
           direction={"column"}
-          maxHeight={"400px"}
+          maxHeight={"450px"}
           width={"30%"}
           p={"30px"}
           alignItems={"center"}

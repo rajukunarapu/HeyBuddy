@@ -14,6 +14,7 @@ const LoginPage = () => {
         title2={"Get access to your Orders, Wishlist and Recommendations"}
         mode={"login"}
         href={"/signup"}
+        linkName={"New to flipkart? Create an account"}
       />
       <Footer />
     </>

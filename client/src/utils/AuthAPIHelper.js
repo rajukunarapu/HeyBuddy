@@ -1,23 +1,28 @@
-import React from "react";
-import Axios from 'axios'
+import Axios from "axios";
 
-const sharedAPI = async(url,userData)=>{
+const sharedAPI = async (url, userData) => {
+  try {
+    const res = await Axios.post(url, userData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      withCredentials: true,
+    });
 
-    try{
-        const res = await Axios.post(url,userData,{
-            headers:{
-                "Content-Type" : "application/json",
-            },
-            withCredentials : "true"
-
-        })
-        const data = res.data
-        return data
-
-    }catch(error){
-        console.log("API Error: ", error)
+    return { success: true, message: res.data.message };
+  } catch (error) {
+    console.log("API Error: ", error);
+    if (error.response && error.response.data) {
+      return {
+        success: false,
+        message: error.response.data.message || "something went wrong",
+      };
     }
-
-}
+    return {
+      success: false,
+      message: error.message || "Network error occured",
+    };
+  }
+};
 
 export default sharedAPI;

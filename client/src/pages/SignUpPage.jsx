@@ -14,6 +14,7 @@ const SignUpPage = () => {
         title2={"Sign up with your email address to get started"}
         mode={"signup"}
         href={"/login"}
+        linkName={"Existing user? Login"}
       />
       <Footer />
     </>

@@ -20,7 +20,8 @@ app.use(cors({
         }else{
             return callback(null,false)  // or callback(new Error("this origin has no access")) Throwing new-error
         }
-    }
+    },
+    credentials : true
 }))
 
 // for routes
