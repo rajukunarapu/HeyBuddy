@@ -7,6 +7,7 @@ export const LeftArrowButtonSx = {
   minWidth: "40px",
   backgroundColor: "white",
   boxShadow: "none",
+  zIndex : 3,
   "&:hover":{ boxShadow : "none" }
 };
 
@@ -19,5 +20,6 @@ export const RightArrowButtonSx = {
   minWidth: "40px",
   backgroundColor: "white",
   boxShadow: "none",
+  zIndex :3,
   "&:hover":{ boxShadow : "none" }
 };

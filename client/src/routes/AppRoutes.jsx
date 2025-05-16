@@ -1,6 +1,7 @@
 import React from 'react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { Suspense,lazy } from 'react'
+import PageLoading from '../components/Common/PageLoading'
 
 const AppRoutes = () => {
 
@@ -11,7 +12,7 @@ const AppRoutes = () => {
   return (
     <>
         <BrowserRouter>
-            <Suspense >
+            <Suspense fallback={<PageLoading/>} >
                 <Routes>
                     <Route path='/' element={<HomePage/>} />
                     <Route path='/signup' element={<SignUpPage/>} />

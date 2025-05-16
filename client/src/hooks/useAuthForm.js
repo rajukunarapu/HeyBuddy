@@ -1,7 +1,11 @@
 import { useState } from "react";
 import sharedAPI from "../utils/AuthAPIHelper";
+import {useNavigate} from 'react-router-dom'
 
 function useAuthForm(mode) {
+
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [isValidationAlertShow, setIsValidationAlertShow] = useState(false);
   const [isResponseAlertShow, setIsResponseAlertShow] = useState(false);
@@ -42,6 +46,7 @@ function useAuthForm(mode) {
 
       if (data.success) {
         setFormData({ email: "", password: "" });
+        navigate('/')
       }
     }
   };

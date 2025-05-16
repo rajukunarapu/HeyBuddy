@@ -15,7 +15,7 @@ import {
   Typography,
 } from "@mui/material";
 
-const MenuForLogin = ({ open, anchorEl, handleMenuClose }) => {
+const MenuForLogin = ({ open, anchorEl, handleMenuClose,handleMouseEnter, handleMouseLeave }) => {
 
   const menuItemsLables = [
     { id: 1, name: "My Profile", icon: <AccountCircle /> },
@@ -27,12 +27,16 @@ const MenuForLogin = ({ open, anchorEl, handleMenuClose }) => {
 
   return (
     <>
+      
       <Menu
         open={open}
         anchorEl={anchorEl}
         onClose={handleMenuClose}
-        sx={{"& .MuiList-root":{p:0}}}
-        MenuListProps={{ onMouseLeave: handleMenuClose }}
+        sx={{"& .MuiList-root":{p:0}, mt:0.4}}
+        MenuListProps={{
+          onMouseEnter : handleMouseEnter,
+          onMouseLeave : handleMouseLeave
+        }}
       >
         <Stack
           direction={"row"}

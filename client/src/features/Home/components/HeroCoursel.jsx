@@ -1,10 +1,10 @@
 import { Box } from '@mui/material'
-import React from 'react'
+import { useEffect, useState } from 'react'
 import ArrowButton from './Common/ArrowButton'
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material'
 import { LeftArrowButtonSx, RightArrowButtonSx } from '../Styles/ArrowButtonSx'
 import SumsangBanner from '../../../assets/images/sumsang_branding_herocoursel.webp'
-import SofaBanner from '../../../assets/images/sofas-branding-herocousel.webp'
+import SofaBanner from '../../../assets/images/sofas_branding_herocoursel.webp'
 import BedBanner from '../../../assets/images/bed_branding_herocoursel.webp'
 import AIBanner from '../../../assets/images/Ai_branding_herocoursel.webp'
 
@@ -15,11 +15,57 @@ const HeroCoursel = () => {
     { id : 2, name : "rightArrowButton", sx : RightArrowButtonSx, icon : <ArrowForwardIos/> }
   ]
 
+  const images = [SumsangBanner, SofaBanner, BedBanner, AIBanner]
+  const [index, setIndex] = useState(0)
+  const [isSliding, setIsSliding] = useState(false)
+
+  useEffect(()=>{
+    const timeInterval = setInterval(()=>{
+      setIsSliding(true)
+      setTimeout(()=>{
+        setIndex((prev)=> (prev + 1) % images.length)
+        setIsSliding(false)
+      },1000)
+    },5000)
+
+    return ()=>clearInterval(timeInterval)
+  },[images.length])
+
+  let currentIndex = images[index]
+  let nextIndex = images[(index +1) % images.length]
+
   return (
     <>
-        <Box m={2} sx={{ height:'250px', backgroundColor:'white', position:"relative" }}  >
+        <Box m={2} sx={{ height:'250px', backgroundColor:'white', position:"relative", overflow: "hidden" }}  >
 
-            <img src={SumsangBanner} width={"100%"} height={"90%"} />
+          <Box sx={{
+            width: "100%",
+            height : "100%",
+            position : "absolute",
+            top:0,
+            let:0,
+            animation : isSliding ? "slideLeft 1s forwards" : "none",
+            zIndex : 1
+          }} > 
+
+            <img src={currentIndex} />
+          </Box>
+
+          {
+            isSliding && <Box sx={{
+            width: "100%",
+            height : "100%",
+            position : "absolute",
+            top:0,
+            let:0,
+            animation : "slideRight 1s forwards",
+            zIndex : 2
+          }} > 
+
+            <img src={nextIndex} />
+          </Box>
+          }
+
 
             {
               ArrowButtons.map((item)=>(

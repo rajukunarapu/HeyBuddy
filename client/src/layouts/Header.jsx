@@ -9,8 +9,9 @@ import SellerButton from "../components/AppBar/SellerButton";
 const Header = () => {
   return (
     <>
-      <AppBar position="relative"
+      <AppBar position="sticky" 
         sx={{
+          top:0,
           backgroundColor: "white",
           "&.MuiPaper-root": { boxShadow: "none" },
         }}
