@@ -1,10 +1,13 @@
 import React from 'react'
 import AppRoutes from './routes/AppRoutes'
+import AuthProviderWrapper from './context/AuthProviderWrapper'
 
 const App = () => {
   return (
     <>
-      <AppRoutes/>
+      <AuthProviderWrapper>
+        <AppRoutes/>
+      </AuthProviderWrapper>
     </>
   )
 }

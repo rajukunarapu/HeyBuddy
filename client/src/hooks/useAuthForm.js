@@ -1,6 +1,8 @@
-import { useState } from "react";
-import sharedAPI from "../utils/AuthAPIHelper";
+import { useContext, useState } from "react";
+import {sharedAPI} from "../utils/AuthAPIHelper";
 import {useNavigate} from 'react-router-dom'
+import { AuthContext } from "../context/AuthContext";
+
 
 function useAuthForm(mode) {
 
@@ -11,6 +13,8 @@ function useAuthForm(mode) {
   const [isResponseAlertShow, setIsResponseAlertShow] = useState(false);
   const [isAlertSuccess, setIsAlertSuccess] = useState(false);
   const [responseAlertMessage, setResponseAlertMessage] = useState("");
+
+  const { authCheck } = useContext(AuthContext)
 
   const handleOnChange = (event) => {
     setFormData((prev) => ({
@@ -46,6 +50,7 @@ function useAuthForm(mode) {
 
       if (data.success) {
         setFormData({ email: "", password: "" });
+        authCheck();
         navigate('/')
       }
     }

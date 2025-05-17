@@ -1,6 +1,7 @@
 import Axios from "axios";
 
-const sharedAPI = async (url, userData) => {
+// shared API for signIn and signUp
+export const sharedAPI = async (url, userData) => {
   try {
     const res = await Axios.post(url, userData, {
       headers: {
@@ -25,4 +26,40 @@ const sharedAPI = async (url, userData) => {
   }
 };
 
-export default sharedAPI;
+// isAuthenticated for Protected routes
+export const isAuthenticatedAPI = async () => {
+  try {
+    const res = await Axios.get(
+      `${import.meta.env.VITE_SERVER_URL}/auth/isAuthenticated`,
+      {
+        headers: {
+          "content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+    return { success: res.data.success };
+  } catch (error) {
+    console.log("Error : " + error.message);
+    return { success: error.response.data.success };
+  }
+};
+
+export const logoutAPI = async () => {
+  try {
+    const res = await Axios.get(
+      `${import.meta.env.VITE_SERVER_URL}/auth/logout`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+      }
+    );
+
+    return { message: res.data.message };
+  } catch (error) {
+    console.log("Error : " + error.message);
+    return { message : error.response.data.message }
+  }
+};

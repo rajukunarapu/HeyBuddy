@@ -1,10 +1,12 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Button } from "@mui/material";
 import { ExpandMore, ExpandLess, AccountCircle } from "@mui/icons-material";
 import MenuForLogin from "../Common/MenuForLogin";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginButton = () => {
+  const { isAuthenticated } = useContext(AuthContext)
   // For hover styling
   const [hover, setHover] = useState(false);
   // For anchorEl
@@ -64,7 +66,7 @@ const LoginButton = () => {
           textTransform: "capitalize",
         }}
       >
-        <Typography variant="body1">Login</Typography>
+        <Typography variant="body1">{isAuthenticated?"Account":"Login"}</Typography>
       </Button>
 
       <MenuForLogin
