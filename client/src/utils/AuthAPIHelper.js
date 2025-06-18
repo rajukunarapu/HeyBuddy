@@ -41,7 +41,7 @@ export const isAuthenticatedAPI = async () => {
     return { success: res.data.success };
   } catch (error) {
     console.log("Error : " + error.message);
-    return { success: error.response.data.success };
+    return { success: false };
   }
 };
 

@@ -31,6 +31,13 @@ const HeroCoursel = () => {
     return ()=>clearInterval(timeInterval)
   },[images.length])
 
+  if(index === -1){
+    setIndex(3)
+  }
+  if(index === 4){
+    setIndex(0)
+  }
+
   let currentIndex = images[index]
   let nextIndex = images[(index +1) % images.length]
 
@@ -48,7 +55,7 @@ const HeroCoursel = () => {
             zIndex : 1
           }} > 
 
-            <img src={currentIndex} />
+            <img src={currentIndex}  loading='lazy' decoding='async' style={{width:'100%', height:'100%',objectFit:'cover'}} />
           </Box>
 
           {
@@ -62,14 +69,20 @@ const HeroCoursel = () => {
             zIndex : 2
           }} > 
 
-            <img src={nextIndex} />
+            <img src={nextIndex} loading='lazy' decoding='async' style={{width:'100%', height:'100%',objectFit:'cover'}} />
           </Box>
           }
 
 
             {
               ArrowButtons.map((item)=>(
-                <ArrowButton key={item.id} sx={item.sx} >
+                <ArrowButton key={item.id} onClick={()=>{
+                  if(item.name === "leftArrowButton"){
+                    setIndex(index-1)
+                  }else{
+                    setIndex(index+1)
+                  }
+                }} sx={item.sx} >
                   {item.icon}
                 </ArrowButton>
               ))

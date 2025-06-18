@@ -50,7 +50,7 @@ function useAuthForm(mode) {
 
       if (data.success) {
         setFormData({ email: "", password: "" });
-        authCheck();
+        await authCheck();
         navigate('/')
       }
     }

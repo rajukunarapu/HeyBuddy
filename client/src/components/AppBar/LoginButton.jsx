@@ -26,9 +26,9 @@ const LoginButton = () => {
   const navigate = useNavigate()
 
   const handleOnClick = ()=>{
+    console.log("clicked")
     setanchorEl(null);
     navigate('/login')
-
   }
 
   //for handleMouseEnter

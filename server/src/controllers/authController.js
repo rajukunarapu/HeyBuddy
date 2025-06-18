@@ -91,6 +91,6 @@ exports.isAuthenticatedController = async (req, res) => {
   try {
     res.json({ message: "authenticated successfully", success: true });
   } catch (error) {
-    res.status(400).json({ message: error.message, success: false });
+    res.status(401).json({ message: error.message, success: false });
   }
 };

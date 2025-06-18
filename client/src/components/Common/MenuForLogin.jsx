@@ -37,9 +37,9 @@ const MenuForLogin = ({
 
   const menuItemsAfterAuthenticate = [
     ...menuItemsBeforeAuthenticate,
-    { id : 6, name : "Notification", icon : <Notifications/>  },
-    { id : 7, name : "logout", icon : <Logout/> },
-  ]
+    { id: 6, name: "Notification", icon: <Notifications /> },
+    { id: 7, name: "logout", icon: <Logout /> },
+  ];
 
   const { isAuthenticated, authCheck } = useContext(AuthContext);
 
@@ -49,7 +49,7 @@ const MenuForLogin = ({
         open={open}
         anchorEl={anchorEl}
         onClose={handleMenuClose}
-        sx={{ "& .MuiList-root": { p: 0 }, mt: 0.4 }}
+        sx={{ "& .MuiList-root": { p: 0 }, mt: 0.4}}
         MenuListProps={{
           onMouseEnter: handleMouseEnter,
           onMouseLeave: handleMouseLeave,
@@ -57,13 +57,17 @@ const MenuForLogin = ({
       >
         {isAuthenticated
           ? menuItemsAfterAuthenticate.map((item) => (
-              <MenuItem  sx={{width : "250px"}} onClick={ ()=>{
-                item.name === "logout"&& 
-                logoutAPI();
-                authCheck();
-                
-              }
-                } key={item.id}>
+              <MenuItem
+                sx={{ width: "250px" }}
+                onClick={async () => {
+                  if (item.name === "logout") {
+                    await logoutAPI();
+                    await authCheck();
+                    handleMenuClose()
+                  }
+                }}
+                key={item.id}
+              >
                 <Stack
                   direction={"row"}
                   alignItems={"center"}
@@ -77,7 +81,7 @@ const MenuForLogin = ({
             ))
           : [
               <Stack
-              key={"stack"}
+                key={"stack"}
                 direction={"row"}
                 spacing={6}
                 p={"15px 16px"}

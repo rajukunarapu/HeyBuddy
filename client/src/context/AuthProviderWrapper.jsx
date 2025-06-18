@@ -9,13 +9,14 @@ const AuthProviderWrapper = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     const authCheck = async()=>{
-      const { success } = await isAuthenticatedAPI();
-     setIsAuthenticated(success)
+      let { success } = await isAuthenticatedAPI();
+      console.log( { success})
+      setIsAuthenticated(success)
     }
 
     useEffect(()=>{
         authCheck()
-    },[isAuthenticated])
+    },[])
 
   return (
     <>
