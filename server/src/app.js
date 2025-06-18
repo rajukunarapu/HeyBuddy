@@ -9,7 +9,7 @@ const app = express();
 app.use(cookieParser())   // reading cookies
 app.use(express.json())   // converting json to js
 
-const allowedOrigins = [`${process.env.FRONTEND_URL}`, 'https://flipkart-clone-frontend-jade.vercel.app']
+const allowedOrigins = [`${process.env.FRONTEND_URL}`]
 
 // cross-origin resource sharing middleware for strict origin
 app.use(cors({
@@ -25,6 +25,9 @@ app.use(cors({
 }))
 
 // for routes
+app.get('/',(req,res)=>{
+    res.json("Hello world")
+})
 app.use('/auth', authRoutes)
 
 
