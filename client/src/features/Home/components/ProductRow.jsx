@@ -43,6 +43,7 @@ const ProductRow = () => {
           >
             {images.map((item) => (
               <Stack
+              key={item.id}
                 direction={"column"}
                 justifyContent={"center"}
                 alignItems={"center"}
